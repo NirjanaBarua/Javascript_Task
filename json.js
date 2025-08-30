@@ -263,17 +263,13 @@ const userproducts = {
         }
     ]
 }
-//number 1
+//number 5
+let items = [];
 function productNames(userproducts) {
-    let result = userproducts.products.filter(product => product.category === "Electronics");
-    for (i = 0; i < result.length; i++) {
-        return result;
-    }
-
+    let search = userproducts.products.map(product => product.reviews.map(r => r.user_id))
+    return search;
 }
 const output = productNames(userproducts);
-let proname=[];
-for (let i = 0; i < output.length; i++) {
-   proname.push(output[i].name);   
-}
-console.log(proname.sort());
+
+console.log(output);
+
