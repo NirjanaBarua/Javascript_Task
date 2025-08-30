@@ -264,18 +264,12 @@ const userproducts = {
     ]
 }
 
-///task c..onek try korsi but partesi na...
+///task b..onek try korsi but partesi na...ulta palta value ashtese.
 let items = [];
-function productNames(userproducts, feature) {
-    let search = userproducts.products.filter(product => product.features[0]===feature)
-    for(let i=0;i<search.length;i++)
-    {
-        items.push(search[i].product_id);
-    }
-    return items;
+function avg(userproducts) {
+    let search = userproducts.products.map(product => product.reviews.map(review => review.rating))
+    return search;
 }
-const output = productNames(userproducts, "Bluetooth 5.0");
-console.log(output);
-
-
-
+const output = avg(userproducts);
+const sum = output.reduce((accumulator, currentValue) => accumulator + currentValue);
+console.log(sum);
