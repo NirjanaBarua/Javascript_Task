@@ -263,13 +263,20 @@ const userproducts = {
         }
     ]
 }
-//number 5
+//number h
+//it is not fully maybe correct cause i have tried to use conditional operators but not getting the exact value.
 let items = [];
 function productNames(userproducts) {
-    let search = userproducts.products.map(product => product.reviews.map(r => r.user_id))
-    return search;
+    let search = userproducts.products.filter(product => product.reviews.find(r => r.rating === 2 ))
+    for(let i=0;i<search.length;i++)
+    {
+        items.push(search[i].name);
+    }
+    return items;
 }
-const output = productNames(userproducts);
 
+const output = productNames(userproducts);
 console.log(output);
+
+
 
