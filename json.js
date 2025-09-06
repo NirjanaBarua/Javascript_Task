@@ -263,15 +263,15 @@ const userproducts = {
         }
     ]
 }
-///updated number 1
-function productNames(userproducts) {
-    let result = userproducts.products
-    .filter(product => product.category === "Electronics")
-    .map(product=>product.name)
-    .sort();
+///number b
+function getProducts(userproducts) {
+    
+    const result = userproducts.products
+        .map(product => ({ name: product.name, avgRating: product.reviews
+            .reduce((sum, review) => sum + review.rating, 0) / product.reviews.length }));
 
     return result;
-    
+
 }
-const output = productNames(userproducts);
+const output = getProducts(userproducts);
 console.log(output);
