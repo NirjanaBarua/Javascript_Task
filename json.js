@@ -263,13 +263,15 @@ const userproducts = {
         }
     ]
 }
+///updated number 1
+function productNames(userproducts) {
+    let result = userproducts.products
+    .filter(product => product.category === "Electronics")
+    .map(product=>product.name)
+    .sort();
 
-///task b..onek try korsi but partesi na...ulta palta value ashtese.
-let items = [];
-function avg(userproducts) {
-    let search = userproducts.products.map(product => product.reviews.map(review => review.rating))
-    return search;
+    return result;
+    
 }
-const output = avg(userproducts);
-const sum = output.reduce((accumulator, currentValue) => accumulator + currentValue);
-console.log(sum);
+const output = productNames(userproducts);
+console.log(output);
