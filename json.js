@@ -263,19 +263,19 @@ const userproducts = {
         }
     ]
 }
-///number f
+///number i
 function getProducts(userproducts) {
 
-    const result = userproducts.products
-        .filter(product => product.reviews.length >= 4)
-        .map(product => ({
-            product_id: product.product_id, name: product.name, avgRating: product.reviews
-                .reduce((sum, review) => sum + review.rating, 0) / product.reviews.length
-        }))
-        .sort((a, b) => b.avgRating - a.avgRating)
-        .slice(0, 3);
+    const filtered = userproducts.products.filter(product => product.features.includes("Water Resistant"));
+    const featureAvg = filtered.reduce((sum, product) => sum + product.price, 0) / filtered.length;
+    const overallAvg = userproducts.products.reduce((s,p)=>s+p.price,0)/userproducts.products.length;
+    const difference= featureAvg - overallAvg;
 
-    return result;
+    return {
+        featureAvg: parseFloat(featureAvg.toFixed(2)),
+        overallAvg: parseFloat(overallAvg.toFixed(2)),
+        difference: parseFloat(difference.toFixed(2))
+    };
 
 }
 const output = getProducts(userproducts);
