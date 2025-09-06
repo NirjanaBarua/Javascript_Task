@@ -265,14 +265,16 @@ const userproducts = {
         }
     ]
 }
-///corrected number c
+///corrected number h
 
 function productNames(userproducts) {
-    const search = userproducts.products
-    .filter(product => product.features.includes("Bluetooth 5.0"))
-    .map(product=>product.product_id);
-   
-    return search;
+    let result = userproducts.products
+        .filter(product => product.reviews.some(r => r.rating <= 2) &&
+            product.reviews.some(r => r.rating === 5)
+        )
+        .map(product => product.name);
+
+    return result;
 }
 const output = productNames(userproducts);
 console.log(output);
