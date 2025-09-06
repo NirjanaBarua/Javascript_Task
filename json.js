@@ -263,12 +263,17 @@ const userproducts = {
         }
     ]
 }
-///number b
+///number f
 function getProducts(userproducts) {
-    
+
     const result = userproducts.products
-        .map(product => ({ name: product.name, avgRating: product.reviews
-            .reduce((sum, review) => sum + review.rating, 0) / product.reviews.length }));
+        .filter(product => product.reviews.length >= 4)
+        .map(product => ({
+            product_id: product.product_id, name: product.name, avgRating: product.reviews
+                .reduce((sum, review) => sum + review.rating, 0) / product.reviews.length
+        }))
+        .sort((a, b) => b.avgRating - a.avgRating)
+        .slice(0, 3);
 
     return result;
 
