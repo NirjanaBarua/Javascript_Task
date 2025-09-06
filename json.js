@@ -1,3 +1,5 @@
+
+
 const userproducts = {
     "products": [
         {
@@ -263,20 +265,15 @@ const userproducts = {
         }
     ]
 }
-///number i
-function getProducts(userproducts) {
+///corrected number c
 
-    const filtered = userproducts.products.filter(product => product.features.includes("Water Resistant"));
-    const featureAvg = filtered.reduce((sum, product) => sum + product.price, 0) / filtered.length;
-    const overallAvg = userproducts.products.reduce((s,p)=>s+p.price,0)/userproducts.products.length;
-    const difference= featureAvg - overallAvg;
-
-    return {
-        featureAvg: parseFloat(featureAvg.toFixed(2)),
-        overallAvg: parseFloat(overallAvg.toFixed(2)),
-        difference: parseFloat(difference.toFixed(2))
-    };
-
+function productNames(userproducts) {
+    const search = userproducts.products
+    .filter(product => product.features.includes("Bluetooth 5.0"))
+    .map(product=>product.product_id);
+   
+    return search;
 }
-const output = getProducts(userproducts);
+const output = productNames(userproducts);
 console.log(output);
+
