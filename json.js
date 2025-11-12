@@ -265,6 +265,70 @@ const userproducts = {
         }
     ]
 }
+
+///task a
+
+function productNames(userproducts) {
+    let result = userproducts.products
+        .filter(product => product.category === "Electronics")
+        .map(product => product.name)
+        .sort();
+    return result;
+
+}
+const output = productNames(userproducts);
+console.log(output);
+
+///task b
+function getProducts(userproducts) {
+
+    const result = userproducts.products
+        .map(product => ({
+            name: product.name, avgRating: product.reviews
+                .reduce((sum, review) => sum + review.rating, 0) / product.reviews.length
+        }));
+}
+const output = getProducts(userproducts);
+console.log(output);
+
+///task c
+
+function productNames(userproducts) {
+    const search = userproducts.products
+        .filter(product => product.features.includes("Bluetooth 5.0"))
+        .map(product => product.product_id);
+
+    return search;
+}
+
+const output = productNames(userproducts);
+console.log(output);
+
+///task e
+let items = [];
+function productNames(userproducts) {
+    let search = userproducts.products.map(product => product.reviews.map(r => r.user_id))
+    return search;
+}
+
+console.log(output);
+
+///task f
+function getProducts(userproducts) {
+    const result = userproducts.products
+        .filter(product => product.reviews.length >= 4)
+        .map(product => ({
+            product_id: product.product_id, name: product.name, avgRating: product.reviews
+                .reduce((sum, review) => sum + review.rating, 0) / product.reviews.length
+        }))
+        .sort((a, b) => b.avgRating - a.avgRating)
+        .slice(0, 3);
+    return result;
+}
+const output = getProducts(userproducts);
+console.log(output);
+
+
 ///corrected number h
 
 function productNames(userproducts) {
@@ -278,4 +342,22 @@ function productNames(userproducts) {
 }
 const output = productNames(userproducts);
 console.log(output);
+
+///task i
+function getProducts(userproducts) {
+    const filtered = userproducts.products.filter(product => product.features.includes("Water Resistant"));
+    const featureAvg = filtered.reduce((sum, product) => sum + product.price, 0) / filtered.length;
+    const overallAvg = userproducts.products.reduce((s, p) => s + p.price, 0) / userproducts.products.length;
+    const difference = featureAvg - overallAvg;
+    return {
+        featureAvg: parseFloat(featureAvg.toFixed(2)),
+        overallAvg: parseFloat(overallAvg.toFixed(2)),
+        difference: parseFloat(difference.toFixed(2))
+    };
+
+}
+const output = getProducts(userproducts);
+
+
+
 
