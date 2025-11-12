@@ -267,7 +267,6 @@ const userproducts = {
 }
 
 ///task a
-
 function productNames(userproducts) {
     let result = userproducts.products
         .filter(product => product.category === "Electronics")
@@ -292,7 +291,6 @@ const output = getProducts(userproducts);
 console.log(output);
 
 ///task c
-
 function productNames(userproducts) {
     const search = userproducts.products
         .filter(product => product.features.includes("Bluetooth 5.0"))
@@ -329,9 +327,7 @@ function getProducts(userproducts) {
 const output = getProducts(userproducts);
 console.log(output);
 
-
 ///corrected number h
-
 function productNames(userproducts) {
     let result = userproducts.products
         .filter(product => product.reviews.some(r => r.rating <= 2) &&
