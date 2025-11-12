@@ -311,6 +311,7 @@ function productNames(userproducts) {
     return search;
 }
 
+const output = productNames(userproducts);
 console.log(output);
 
 ///task f
@@ -357,6 +358,7 @@ function getProducts(userproducts) {
 
 }
 const output = getProducts(userproducts);
+console.log(output);
 
 
 
